@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>New Ticket</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <mat-label>New Ticket Description</mat-label>
+      <input matInput [formControl]="ticketFormControl" type="text">
+      <mat-error *ngIf="ticketFormControl.hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+</div>

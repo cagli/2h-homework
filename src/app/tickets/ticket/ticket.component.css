@@ -1,0 +1,27 @@
+.container {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user {
+  display:flex;
+  align-items: center;
+  padding-right: 20px;
+ }
+
+ .status {
+   padding: 10px;
+   font-size: small;
+   font-weight: 500;
+
+ }
+
+ .completed {
+   color: green;
+ }
+
+ .pending {
+   color: orangered;
+ }

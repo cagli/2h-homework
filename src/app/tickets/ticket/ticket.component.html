@@ -1,0 +1,23 @@
+
+<mat-card *ngIf="ticket && !isLoading, else loading" class="container">
+  <mat-checkbox [(checked)]="ticket.completed" (click)="$event.stopPropagation()" (change)="complete($event.checked)" class=""></mat-checkbox>
+  <div> {{ ticket.description }} </div>
+  <div class= "status" [ngClass]="status"> {{ status }}</div>
+  <div class="user">
+    <mat-icon>account_circle</mat-icon>
+    <span *ngIf="user, else needAssignement">
+    {{user.name}}
+    </span>
+
+  </div>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner *ngIf='isLoading' class='spinner'></mat-spinner>
+</ng-template>
+
+<ng-template #needAssignement>
+  <span >
+   need to be assigned
+  </span>
+</ng-template>

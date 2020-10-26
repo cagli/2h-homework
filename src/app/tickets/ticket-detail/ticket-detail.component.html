@@ -1,0 +1,47 @@
+
+
+<mat-card *ngIf="ticket"class="ticket-container">
+<mat-card-header class="ticket-container_header">
+  <mat-card-title class="ticket-container_title">
+    <a [routerLink]="['/']"  matTooltip="Back to Ticket List"><mat-icon color="primary">arrow_back_ios</mat-icon></a>
+    {{ticket?.description}}
+    <mat-icon class="icon" [ngClass]="ticket.completed ? 'completed' : 'pending'">{{status}}</mat-icon>
+  </mat-card-title>
+
+</mat-card-header>
+
+
+<mat-card-content class="ticket-container_content">
+
+  should use it as the content of the ticket
+
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non tempus leo, id ultrices dolor. Quisque egestas scelerisque augue, vitae vulputate dui sodales in. Aenean sagittis pellentesque magna id semper. In varius tempor egestas. Maecenas id euismod nunc. Cras id odio a leo mollis viverra ac a nunc. Morbi suscipit vel mi vitae sagittis. Aliquam non sapien lacus. Nunc eget eros sed urna consectetur elementum eget ac orci.
+
+  Fusce sed blandit ipsum. Curabitur laoreet turpis eget metus vulputate, id pretium massa sodales. Praesent laoreet dui arcu, ac imperdiet nibh ullamcorper ac. Nullam vitae mi tortor. Aliquam interdum commodo erat sit amet lacinia. Fusce venenatis ultrices facilisis. Nam tempor nibh tortor, vitae pellentesque ante ullamcorper a. Pellentesque leo diam, consectetur sed vestibulum non, dapibus et diam.
+
+  Praesent laoreet, mauris non pulvinar suscipit, urna orci pulvinar dolor, ac pretium elit nisi non metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras metus ipsum, malesuada sed metus nec, interdum molestie nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam euismod risus porttitor nibh posuere, vitae rhoncus ipsum tincidunt. Donec libero ex, ornare et finibus eget, mattis convallis nibh. Nullam pulvinar molestie tempor. Nulla aliquam volutpat tortor sed lacinia. Proin tortor enim, dapibus in tempus sit amet, ultrices nec dui. Pellentesque ornare lectus in velit auctor sodales.
+
+  Donec tincidunt dui sit amet porttitor fermentum. Nullam venenatis ullamcorper nisi tincidunt sagittis. Pellentesque enim dolor, pellentesque finibus dictum ac, facilisis id dolor. Aliquam erat volutpat. Vivamus id tellus turpis. Nunc imperdiet at ipsum ut feugiat. Nunc tempus tincidunt erat, vitae lacinia tellus tincidunt porttitor. Suspendisse facilisis rutrum tincidunt.
+
+  Suspendisse maximus lorem sed mauris venenatis, vitae eleifend nunc mattis. In hac habitasse platea dictumst. Mauris eu est nec enim mollis volutpat. Suspendisse potenti. Phasellus iaculis nibh placerat lacus pulvinar, dapibus facilisis eros facilisis. Suspendisse nec tellus arcu. Integer nulla arcu, porttitor vitae aliquam eget, aliquet eu enim. Nullam sodales, risus vitae semper elementum, ligula nunc iaculis mi, id viverra ipsum leo malesuada ex. Vestibulum et tortor et est vehicula euismod. Vivamus interdum rutrum pharetra. Donec ut sem leo. Praesent sodales enim sapien, id ornare est tristique id. Maecenas dui nibh, finibus in dolor sit amet, dignissim commodo enim. Aliquam erat volutpat. Donec sagittis massa a nunc scelerisque placerat. Donec id risus vel enim dapibus tempus.
+
+</mat-card-content>
+
+
+<mat-card-actions class="actions">
+  <!-- Ticket assigned To: -->
+  <div class="user">
+  <mat-form-field appearance="fill">
+  <mat-label>Assigned To</mat-label>
+  <mat-select  [(value)]="ticket.assigneeId" (selectionChange)="assignTo($event.value)">
+    <mat-option *ngFor="let user of users$ | async" placeholder="assigned to" [value]="user.id">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+  <button mat-button (click)="save()">Task Completed</button>
+</mat-card-actions>
+
+</mat-card>

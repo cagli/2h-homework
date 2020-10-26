@@ -13,7 +13,10 @@ function randomDelay() {
     return Math.random() * 4000;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class BackendService {
     public storedTickets: Ticket[] = [
         {
@@ -26,11 +29,35 @@ export class BackendService {
             id: 1,
             completed: false,
             assigneeId: 111,
-            description: 'Move the desk to the new location'
-        }
+            description: 'Buy some coffee'
+      },
+      {
+        id: 2,
+        completed: false,
+        assigneeId: 112,
+        description: 'Documention about cleaning desk'
+      },
+      {
+        id: 3,
+        completed: false,
+        assigneeId: 114,
+        description: 'Prepare daily meeting'
+      },
+      {
+        id: 4,
+        completed: false,
+        assigneeId: 113,
+        description: 'software review'
+    }
+
     ];
 
-    public storedUsers: User[] = [{ id: 111, name: 'Victor' }];
+  public storedUsers: User[] = [
+    { id: 111, name: 'Victor' },
+    { id: 112, name: 'Igor' },
+    { id: 113, name: 'Hector' },
+    { id: 114, name: 'Belphegor' }
+  ];
 
     private lastId: number = 1;
 
@@ -90,7 +117,7 @@ export class BackendService {
             return of(foundTicket).pipe(
                 delay(randomDelay()),
                 tap((ticket: Ticket) => {
-                    ticket.completed = true;
+                    ticket.completed = completed;
                 })
             );
         }

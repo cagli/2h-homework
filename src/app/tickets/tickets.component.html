@@ -1,0 +1,9 @@
+<div *ngIf="tickets">
+  <mat-nav-list  class="list" >
+    <mat-list-item class="list_item" *ngFor="let ticket of tickets" [routerLink]="['/ticket', ticket.id]">
+      <app-ticket class="ticket" [ticket]="ticket"></app-ticket>
+    </mat-list-item>
+  </mat-nav-list>
+
+</div>
+
